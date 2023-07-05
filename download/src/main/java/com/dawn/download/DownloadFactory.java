@@ -53,7 +53,7 @@ public class DownloadFactory {
     /**
      * 开始下载
      */
-    private void download(FileInfo fileInfo){
+    public void download(FileInfo fileInfo){
         Intent intent = new Intent(mContext, DownloadService.class);
         intent.setAction(DownloadBroadcastUtil.ACTION_START);
         intent.putExtra("fileInfo", fileInfo);

@@ -18,10 +18,25 @@ public class FileInfo implements Serializable {
     private int length;// 文件的大小
     private int finished;// 文件已經完成了多少
 
-    public FileInfo(String url, String fileName, String dir) {
+    /**
+     *
+     * @param id   文件的ID
+     * @param typeId  文件的类型ID
+     * @param url  文件的下載地址
+     * @param fileName  文件的名字
+     * @param dir 文件的目錄
+     * @param length  文件的大小
+     * @param finished  文件已經完成了多少
+     */
+    public FileInfo(int id, int typeId, String url, String fileName, String dir, int length, int finished) {
+        super();
+        this.id = id;
+        this.typeId = typeId;
         this.url = url;
         this.fileName = fileName;
         this.dir = dir;
+        this.length = length;
+        this.finished = finished;
     }
 
     public int getId() {
