@@ -3,6 +3,7 @@ package com.dawn.download;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Message;
 
 import com.dawn.download.broadcast.DownloadBroadcastUtil;
@@ -27,6 +28,7 @@ public class DownloadFactory {
 
     private DownloadFactory(Context context) {
         mContext = context;
+        initDownloadReceiver();
     }
 
     public static DownloadFactory getInstance(Context context) {
@@ -46,6 +48,19 @@ public class DownloadFactory {
      */
     public void setListener(DownloadListener listener) {
         this.mListener = listener;
+    }
+
+    /**
+     * 初始化下载任务
+     */
+    private void initDownloadReceiver(){
+        DownloadReceiver downloadReceiver = new DownloadReceiver();
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(DownloadBroadcastUtil.ACTION_UPDATE);
+        intentFilter.addAction(DownloadBroadcastUtil.ACTION_FINISHED);
+        intentFilter.addAction(DownloadBroadcastUtil.ACTION_START);
+        intentFilter.addAction(DownloadBroadcastUtil.ACTION_ERROR);
+        mContext.registerReceiver(downloadReceiver, intentFilter);
     }
 
     private int failCount;//下载失败次数
