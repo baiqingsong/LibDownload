@@ -1,0 +1,3 @@
+rootProject.name = "LibDownload"
+include ':app'
+include ':download'
