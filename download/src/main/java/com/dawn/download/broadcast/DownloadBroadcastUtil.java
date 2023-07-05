@@ -9,11 +9,11 @@ import com.dawn.download.entitis.FileInfo;
  * 下载的广播
  */
 public class DownloadBroadcastUtil {
-    public static final String ACTION_START = "ACTION_START";//下载开始
-    public static final String ACTION_STOP = "ACTION_STOP";//下载停止
-    public static final String ACTION_UPDATE = "ACTION_UPDATE";//下载更新
-    public static final String ACTION_FINISHED = "ACTION_FINISHED";//下载完成
-    public static final String ACTION_ERROR = "ACTION_ERROR";//下载错误
+    public static final String ACTION_START = "DOWNLOAD_START";//下载开始
+    public static final String ACTION_STOP = "DOWNLOAD_STOP";//下载停止
+    public static final String ACTION_UPDATE = "DOWNLOAD_UPDATE";//下载更新
+    public static final String ACTION_FINISHED = "DOWNLOAD_FINISHED";//下载完成
+    public static final String ACTION_ERROR = "DOWNLOAD_ERROR";//下载错误
 
     /**
      * 发送下载开始的广播
