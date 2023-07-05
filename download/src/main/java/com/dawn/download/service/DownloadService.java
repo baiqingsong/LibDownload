@@ -82,7 +82,7 @@ public class DownloadService extends Service {
                 case MSG_INIT:
                     FileInfo fileInfo = (FileInfo) msg.obj;
                     // 獲取FileInfo對象，開始下載任務
-                    DownloadTask task = new DownloadTask(DownloadService.this, fileInfo, 3);
+                    DownloadTask task = new DownloadTask(DownloadService.this, fileInfo, 4);
                     task.download();
                     // 把下载任务添加到集合中
                     mTasks.put(fileInfo.getId(), task);
