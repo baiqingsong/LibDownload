@@ -46,8 +46,9 @@ public class DownloadFactory {
     /**
      * 设置回调监听
      */
-    public void setListener(DownloadListener listener) {
+    public DownloadFactory setListener(DownloadListener listener) {
         this.mListener = listener;
+        return instance;
     }
 
     /**
