@@ -60,16 +60,18 @@ public class DownloadService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        // 获得Activity传来的参数
-        if (ACTION_START.equals(intent.getAction())) {//下载开始
-            FileInfo fileInfo = (FileInfo) intent.getSerializableExtra("fileInfo");
-            InitThread initThread = new InitThread(fileInfo);
-            DownloadTask.sExecutorService.execute(initThread);
-        } else if (ACTION_STOP.equals(intent.getAction())) {//下载停止
-            FileInfo fileInfo = (FileInfo) intent.getSerializableExtra("fileInfo");
-            DownloadTask task = mTasks.get(fileInfo.getId());
-            if (task != null) {// 停止下载任务
-                task.mIsPause = true;
+        if(intent != null){
+            // 获得Activity传来的参数
+            if (ACTION_START.equals(intent.getAction())) {//下载开始
+                FileInfo fileInfo = (FileInfo) intent.getSerializableExtra("fileInfo");
+                InitThread initThread = new InitThread(fileInfo);
+                DownloadTask.sExecutorService.execute(initThread);
+            } else if (ACTION_STOP.equals(intent.getAction())) {//下载停止
+                FileInfo fileInfo = (FileInfo) intent.getSerializableExtra("fileInfo");
+                DownloadTask task = mTasks.get(fileInfo.getId());
+                if (task != null) {// 停止下载任务
+                    task.mIsPause = true;
+                }
             }
         }
         return super.onStartCommand(intent, flags, startId);
